@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <BorderPane fx:id="loginPane" prefHeight="200.0" prefWidth="200.0">
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Welcome to the Library Book Inventory System">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label text="Log in with the Library ID and your unique password below" />
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TextField fx:id="loginLibraryID" maxWidth="150.0" promptText="Library ID Here" GridPane.rowIndex="1" />
+                        <TextField fx:id="loginPassword" maxWidth="150.0" promptText="Password Here" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Library ID" />
+                        <Label text="Password" GridPane.columnIndex="1" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin>
+                  </GridPane>
+                  <Button fx:id="loginLoginBtn" minWidth="120.0" mnemonicParsing="false" onAction="#login" text="Login">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+      <BorderPane fx:id="landingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" visible="false">
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="intro" alignment="CENTER" text="Welcome to the Library Database System">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="intro2" text="Please select what you would like to do">
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER" minWidth="150.0" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="checkInPaneBtn" minWidth="120.0" mnemonicParsing="false" onAction="#checkInPane" text="Check In">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="inventoryPaneBtn" minWidth="120.0" mnemonicParsing="false" onAction="#inventorySelectPane" text="Inventory" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" minWidth="-Infinity" prefHeight="200.0" prefWidth="150.0">
+                           <children>
+                              <Button fx:id="checkOutPaneBtn" minWidth="120.0" mnemonicParsing="false" onAction="#checkOutPane" text="Check Out">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="searchPaneBtn" minWidth="120.0" mnemonicParsing="false" onAction="#searchPane" text="Search" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+      <BorderPane fx:id="inventorySelectPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" visible="false">
+         <bottom>
+            <Button minWidth="120.0" mnemonicParsing="false" onAction="#back" text="Back" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="30.0" />
+               </BorderPane.margin>
+            </Button>
+         </bottom>
+         <center>
+            <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
+               <children>
+                  <Button minWidth="150.0" mnemonicParsing="false" onAction="#inventoryAddToStockPane" text="Add a New Book">
+                     <GridPane.margin>
+                        <Insets bottom="20.0" right="20.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button minWidth="150.0" mnemonicParsing="false" onAction="#inventoryRemovePane" text="Remove a Book" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="20.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button minWidth="150.0" mnemonicParsing="false" onAction="#inventoryTransferPane" text="Transfer a Book" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets right="20.0" top="20.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button minWidth="150.0" mnemonicParsing="false" onAction="#inventoryShelvePane" text="Shelve Books" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="20.0" top="20.0" />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </center>
+         <top>
+            <Label text="Select the desired inventory operation" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="29.0" />
+               </font>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </Label>
+         </top>
+      </BorderPane>
+      <BorderPane fx:id="checkOutPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" visible="false">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="75.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Student ID">
+                                 <padding>
+                                    <Insets bottom="15.0" top="25.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="checkOutID" minWidth="200.0" promptText="Student ID Here" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="ISBN">
+                                 <padding>
+                                    <Insets bottom="15.0" top="25.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="checkOutISBN" minWidth="200.0" promptText="ISBN Here" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="175.0">
+                     <children>
+                        <Button fx:id="checkOutBtn" minWidth="100.0" mnemonicParsing="false" onAction="#checkOut" text="Check Out">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
+                        <Button minWidth="100.0" mnemonicParsing="false" onAction="#back" text="Back" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+         <top>
+            <HBox alignment="CENTER" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label maxWidth="400.0" text="Please enter the Student ID number and the ISBN of the book to be checked out" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets top="50.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+      <BorderPane fx:id="checkInPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" visible="false">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="75.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Student ID">
+                                 <padding>
+                                    <Insets bottom="15.0" top="25.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="checkInID" minWidth="200.0" promptText="Student ID Here" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="ISBN">
+                                 <padding>
+                                    <Insets bottom="15.0" top="25.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="checkInISBN" minWidth="200.0" promptText="ISBN Here" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="175.0">
+                     <children>
+                        <Button minWidth="100.0" mnemonicParsing="false" onAction="#checkInPane" text="Check In">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
+                        <Button minWidth="100.0" mnemonicParsing="false" onAction="#back" text="Back" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+         <top>
+            <HBox alignment="CENTER" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label maxWidth="400.0" text="Please enter the Student ID number and the ISBN of the book to be checked in" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets top="50.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+      <BorderPane fx:id="inventoryAddToStockPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" visible="false">
+         <top>
+            <Label maxWidth="400.0" text="Enter the ISBN, Title, Author, Genre, Location, and Quantity to be added" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </top>
+         <center>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox alignment="CENTER" maxWidth="200.0" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="ISBN" />
+                        <TextField fx:id="addISBN" promptText="ISBN Here" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" maxWidth="200.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+                     <children>
+                        <Label text="Author" />
+                        <TextField fx:id="addAuthor" promptText="Author Here" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" maxWidth="200.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                     <children>
+                        <Label text="Shelf Code" />
+                        <TextField fx:id="addShelfCode" promptText="Shelf Code Here" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" maxWidth="200.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label text="Title" />
+                        <TextField fx:id="addTitle" promptText="Title Here" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" maxWidth="200.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label text="Genre" />
+                        <TextField fx:id="addGenre" promptText="Genre Here" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" maxWidth="200.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Label text="Quantity" />
+                        <TextField fx:id="addQuantity" promptText="Quantity Here" />
+                     </children>
+                  </VBox>
+                  <Button minWidth="120.0" mnemonicParsing="false" text="Add To Stock" GridPane.rowIndex="3" />
+                  <Button minWidth="120.0" mnemonicParsing="false" onAction="#back" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </center>
+      </BorderPane>
+      <BorderPane fx:id="inventoryRemovePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" visible="false">
+         <top>
+            <Label text="Enter the ISBN, and Quantity to be removed" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets top="40.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
+         <center>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" minWidth="125.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                     <children>
+                        <Label text="ISBN" />
+                        <TextField fx:id="removeISBN" promptText="Enter ISBN" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" minWidth="125.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                     <children>
+                        <Label text="Quantity" />
+                        <TextField fx:id="removeQuantity" promptText="Enter Quantity" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+         <bottom>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button minWidth="120.0" mnemonicParsing="false" text="Remove" />
+                  <Button minWidth="120.0" mnemonicParsing="false" onAction="#back" text="Back" />
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="inventoryShelvePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" visible="false">
+         <top>
+            <Label maxWidth="450.0" text="Please enter the shelf code and ISBN of the book you wish to shelve" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets top="50.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
+         <center>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="ISBN">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="shelveISBN" maxWidth="175.0" promptText="ISBN Here">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label text="Shelf Code">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="shelveShelfCode" maxWidth="175.0" promptText="Shelf Code Here">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <Button minWidth="120.0" mnemonicParsing="false" text="Shelve Books" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets top="50.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button minWidth="120.0" mnemonicParsing="false" onAction="#back" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets top="50.0" />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+            </GridPane>
+         </center>
+      </BorderPane>
+      <BorderPane fx:id="searchPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" visible="false">
+         <top>
+            <Label maxWidth="425.0" text="Please enter one of the following properties: ISBN, Title, Author, Genre, Location, Student ID" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+         </top>
+         <bottom>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="125.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button minWidth="150.0" mnemonicParsing="false" onAction="#search" text="Search" />
+                  <Button minWidth="150.0" mnemonicParsing="false" onAction="#back" text="Back" />
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="150.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <Label text="ISBN" />
+                        <TextField fx:id="searchISBN" minWidth="120.0" promptText="Enter ISBN" />
+                        <Label text="Author" />
+                        <TextField fx:id="searchAuthor" minWidth="120.0" promptText="Enter Author" />
+                        <Label text="Shelf Code" />
+                        <TextField fx:id="searchShelfCode" minWidth="120.0" promptText="Enter Shelf Code" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <Label text="Title" />
+                        <TextField fx:id="searchTitle" minWidth="120.0" promptText="Enter Title" />
+                        <Label text="Genre" />
+                        <TextField fx:id="searchGenre" minWidth="120.0" promptText="Enter Genre" />
+                        <Label text="Student ID" />
+                        <TextField fx:id="searchID" minWidth="120.0" promptText="Enter Student ID">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+      <BorderPane fx:id="popupPane" prefHeight="200.0" prefWidth="200.0" visible="false">
+         <center>
+            <Label fx:id="popupLbl" text="Error: " BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="40.0" />
+               </BorderPane.margin>
+            </Label>
+         </center>
+         <bottom>
+            <Button minWidth="120.0" mnemonicParsing="false" onAction="#back" text="Back" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="100.0" />
+               </BorderPane.margin>
+            </Button>
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="inventoryTransferPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" visible="false">
+         <top>
+            <Label maxWidth="490.0" text="Please enter the Source Library ID, Destination Library ID, ISBN, and Quantity of the transfer" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </top>
+         <center>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.0" minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox alignment="CENTER" maxWidth="175.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                     <children>
+                        <Label text="Destination Library ID" />
+                        <TextField fx:id="transferLibraryID" promptText="Destination Library ID" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" maxWidth="175.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label text="ISBN" />
+                        <TextField fx:id="transferISBN" promptText="ISBN Here" />
+                        <Label text="Quantity" />
+                        <TextField fx:id="transferQuantity" promptText="Quantity Here" />
+                     </children>
+                  </VBox>
+                  <Button minWidth="120.0" mnemonicParsing="false" onAction="#back" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button minWidth="120.0" mnemonicParsing="false" text="Transfer" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>
